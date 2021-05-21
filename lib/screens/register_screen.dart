@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/input_box.dart';
 import 'package:flutter_chat_app/constants/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_chat_app/screens/chat_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -97,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     final newuser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if(newuser!=null){
-                      Navigator.pushNamed(context, RegisterScreen.id);
+                      Navigator.pushNamed(context, ChatScreen.id);
                     }
                     setState(() {
                       showSpinner=false;
