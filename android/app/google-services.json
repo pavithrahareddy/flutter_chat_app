@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "330054653706",
+    "project_id": "fleetmessenger-b047c",
+    "storage_bucket": "fleetmessenger-b047c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330054653706:android:a8d2f073e7be97c6da0cf3",
+        "android_client_info": {
+          "package_name": "co.pavithra.flutter_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330054653706-vho7pulsrir7j5v08vb2gc2tcbftfop3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbdKJLgcNTeJtDiSFXVR25YCUOeugHRwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330054653706-vho7pulsrir7j5v08vb2gc2tcbftfop3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
