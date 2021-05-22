@@ -13,10 +13,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
-  final _auth =FirebaseAuth.instance;
-  bool showSpinner=false;
-
+  final _auth = FirebaseAuth.instance;
+  bool showSpinner = false;
 
   String email;
   String password;
@@ -27,76 +25,79 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Center(
-                  child: Image.asset('images/fleet.png',
-                    height: 225,
-                    width: 225,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Hero(
+                    tag: 'logo',
+                    child: Center(
+                      child: Image.asset(
+                        'images/fleet.png',
+                        height: 225,
+                        width: 225,
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextField(
+                    textAlign: TextAlign.center,
+                    style: InputText,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: InputBox.copyWith(
+                      hintText: "Enter your email",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    style: InputText,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: InputBox.copyWith(
+                      hintText: "Enter your password",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  RoundedButton(
+                    title: 'LOGIN',
+                    tcolor: Color.fromARGB(255, 202, 247, 227),
+                    colour: Color.fromARGB(255, 255, 145, 70),
+                    onPressed: () async {
+                      setState(() {
+                        showSpinner = true;
+                      });
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushNamed(context, ChatScreen.id);
+                        }
+                        setState(() {
+                          showSpinner = false;
+                        });
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 25,
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                style: InputText,
-                onChanged: (value) {
-                  email=value;
-                },
-                decoration: InputBox.copyWith(
-                  hintText: "Enter your email",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                style: InputText,
-                onChanged: (value) {
-                  password=value;
-
-                },
-                decoration: InputBox.copyWith(
-                  hintText: "Enter your password",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              RoundedButton(
-                title: 'LOGIN',
-                tcolor: Color.fromARGB(255, 202, 247, 227),
-                colour: Color.fromARGB(255, 255, 145, 70),
-                onPressed: () async {
-                  setState(() {
-                    showSpinner=true;
-                  });
-                  try {
-                    final user = await _auth.signInWithEmailAndPassword(
-                        email: email, password: password);
-                    if (user != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
-                    }
-                    setState(() {
-                      showSpinner=false;
-                    });
-                  }
-                  catch(e){
-                    print(e);
-                  }
-                },
-              ),
-            ],
+            ),
           ),
         ),
       ),

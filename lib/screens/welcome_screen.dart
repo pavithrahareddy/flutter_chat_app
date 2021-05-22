@@ -47,8 +47,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
               tag: 'logo',
               child: Center(
                 child: Image.asset('images/fleet.png',
-                height: 350,
-                  width: 350,
+                height: 250,
+                  width: 250,
                 ),
               ),
             ),

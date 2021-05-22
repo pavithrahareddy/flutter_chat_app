@@ -13,9 +13,8 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
   final _auth = FirebaseAuth.instance;
-  bool showSpinner=false;
+  bool showSpinner = false;
 
   String name;
   String email;
@@ -27,93 +26,96 @@ class _RegisterScreenState extends State<RegisterScreen> {
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Center(
-                  child: Image.asset('images/fleet.png',
-                    height: 225,
-                    width: 225,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Hero(
+                    tag: 'logo',
+                    child: Center(
+                      child: Image.asset(
+                        'images/fleet.png',
+                        height: 225,
+                        width: 225,
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  TextField(
+                    textAlign: TextAlign.center,
+                    style: InputText,
+                    onChanged: (value) {
+                      name = value;
+                    },
+                    decoration: InputBox.copyWith(
+                      hintText: "Enter your name",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
+                    style: InputText,
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    decoration: InputBox.copyWith(
+                      hintText: "Enter your email",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
+                    style: InputText,
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    decoration: InputBox.copyWith(
+                      hintText: "Enter your password",
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  RoundedButton(
+                    title: 'REGISTER',
+                    tcolor: Color.fromARGB(255, 202, 247, 227),
+                    colour: Color.fromARGB(255, 255, 145, 70),
+                    onPressed: () async {
+                      setState(() {
+                        showSpinner = true;
+                      });
+                      try {
+                        final newuser = await _auth.createUserWithEmailAndPassword(
+                            email: email, password: password);
+                        if (newuser != null) {
+                          Navigator.pushNamed(context, ChatScreen.id);
+                        }
+                        setState(() {
+                          showSpinner = false;
+                        });
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 25,
-              ),
-              TextField(
-                textAlign: TextAlign.center,
-                style: InputText,
-                onChanged: (value) {
-                  name=value;
-                },
-                decoration: InputBox.copyWith(
-                  hintText: "Enter your name",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                style: InputText,
-                onChanged: (value) {
-                  email=value;
-                },
-                decoration: InputBox.copyWith(
-                  hintText: "Enter your email",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                style: InputText,
-                onChanged: (value) {
-                  password=value;
-                },
-                decoration: InputBox.copyWith(
-                  hintText: "Enter your password",
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              RoundedButton(
-                title: 'REGISTER',
-                tcolor: Color.fromARGB(255, 202, 247, 227),
-                colour: Color.fromARGB(255, 255, 145, 70),
-                onPressed: () async {
-                  setState(() {
-                    showSpinner=true;
-                  });
-                  try {
-                    final newuser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-                    if(newuser!=null){
-                      Navigator.pushNamed(context, ChatScreen.id);
-                    }
-                    setState(() {
-                      showSpinner=false;
-                    });
-                  }
-                  catch(e){
-                    print(e);
-                  }
-                },
-              ),
-            ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
