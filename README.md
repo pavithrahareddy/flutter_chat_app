@@ -9,6 +9,6 @@
 
 <img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/login.jpeg" width="280" height="520" />
 
-[![license]](https://github.com/pavithrahareddy/flutter_chat_app/blob/85d15fe818762fa705efb5526ff098aeb2c6277a/LICENSE)
+![license](https://github.com/pavithrahareddy/flutter_chat_app/blob/85d15fe818762fa705efb5526ff098aeb2c6277a/LICENSE)
 
 
