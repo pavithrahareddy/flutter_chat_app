@@ -5,11 +5,11 @@
 
 <p float="left">
 
-<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/welcome.jpeg" width="280" height="520" />
+<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/welcome.jpeg" width="260" height="530" />
 
-<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/register.jpeg" width="280" height="520" />
+<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/register.jpeg" width="260" height="530" />
 
-<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/login.jpeg" width="280" height="520" />
+<img src="https://github.com/pavithrahareddy/flutter_chat_app/blob/29b9b17e3db3cdf112dd65acbedfbdc8006ce179/screenshots/login.jpeg" width="260" height="530" />
   
 </p>
 
